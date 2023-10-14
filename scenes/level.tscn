@@ -58,6 +58,7 @@ gravity = 500
 
 [node name="AnimatedSprite2D" parent="Actors/Player" index="0"]
 animation = &"walk"
+frame = 0
 frame_progress = 0.142799
 
 [node name="CollisionShape2D" parent="Actors/Player" index="1"]

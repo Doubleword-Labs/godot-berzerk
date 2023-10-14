@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwmhvxj2cy4jk"]
+[gd_scene load_steps=17 format=3 uid="uid://bwmhvxj2cy4jk"]
 
 [ext_resource type="PackedScene" uid="uid://dyfbh6jxdnlc6" path="res://scenes/actor.tscn" id="1_y3pom"]
 [ext_resource type="Script" path="res://scripts/imp.gd" id="2_7w4cv"]
 [ext_resource type="Texture2D" uid="uid://cf7gkdd18w1vh" path="res://spritesheets/Berzerk_Robot.png" id="3_lyxm0"]
+[ext_resource type="AudioStream" uid="uid://bsd8fqu8ej0nk" path="res://sounds/506587__mrthenoronha__kill-enemy-2-8-bit.wav" id="4_s7k4n"]
+[ext_resource type="AudioStream" uid="uid://okamhf3gud4e" path="res://sounds/player_attack_sound.ogg" id="5_p44ta"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcht7"]
 atlas = ExtResource("3_lyxm0")
@@ -94,12 +96,14 @@ animations = [{
 radius = 8.0
 height = 21.0
 
-[node name="Imp" node_paths=PackedStringArray("collision_shape") groups=["damageable"] instance=ExtResource("1_y3pom")]
+[node name="Imp" node_paths=PackedStringArray("collision_shape", "attack_sound", "death_sound") groups=["damageable"] instance=ExtResource("1_y3pom")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("2_7w4cv")
 color = Color(0.537255, 0.45098, 0, 1)
 collision_shape = NodePath("CollisionShape2D")
+attack_sound = NodePath("AttackSound")
+death_sound = NodePath("DeathSound")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_pfpgh")
@@ -112,5 +116,11 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -1.5)
 shape = SubResource("CapsuleShape2D_kjbw2")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("4_s7k4n")
+
+[node name="AttackSound" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("5_p44ta")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
