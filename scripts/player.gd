@@ -1,4 +1,4 @@
-extends "res://scripts/actor.gd";
+extends Actor
 
 class_name Player
 
@@ -14,5 +14,8 @@ func _ready():
 func _process(delta):
 	super(delta);
 
-func die():
-	emit_signal("gameover")
+func action_die():
+	var tween = get_tree().create_tween();
+	tween.tween_callback(animated_sprite_2d.play.bind(&"death"));
+	tween.tween_interval(2.0);
+	tween.tween_callback(emit_signal.bind("gameover"))

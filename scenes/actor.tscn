@@ -1,10 +1,72 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyfbh6jxdnlc6"]
+[gd_scene load_steps=8 format=3 uid="uid://dyfbh6jxdnlc6"]
 
 [ext_resource type="Script" path="res://scripts/actor.gd" id="1_rspax"]
+[ext_resource type="Texture2D" uid="uid://dwnirikljbx70" path="res://spritesheets/Berzerk_Player.png" id="2_tva3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1m08"]
+atlas = ExtResource("2_tva3o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kparv"]
+atlas = ExtResource("2_tva3o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiaq6"]
+atlas = ExtResource("2_tva3o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8pe7"]
+atlas = ExtResource("2_tva3o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfa5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1m08")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_kparv")
+}, {
+"duration": 0.25,
+"texture": SubResource("AtlasTexture_yiaq6")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiaq6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_y8pe7")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_yiaq6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Actor" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_rspax")
 color = Color(0.729412, 0, 0, 1)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -10, -10, 0, 0, 10, 10, 0)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tfa5i")
+frame_progress = 0.805579

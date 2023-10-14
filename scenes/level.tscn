@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqhwjiqdls51x"]
+[gd_scene load_steps=8 format=3 uid="uid://dqhwjiqdls51x"]
 
 [ext_resource type="PackedScene" uid="uid://bxv6l2626813g" path="res://scenes/wall.tscn" id="1_5rrd3"]
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_qcjfq"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dcli3lv3owm63" path="res://scenes/player_control.tscn" id="3_maf6i"]
 [ext_resource type="PackedScene" uid="uid://bwmhvxj2cy4jk" path="res://scenes/imp.tscn" id="3_twsnt"]
 [ext_resource type="AudioStream" uid="uid://chchimw0jm73u" path="res://music/metal-01.mp3" id="6_dd6ql"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwpex"]
+radius = 8.0
+height = 22.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_qcjfq")
@@ -47,25 +51,29 @@ polygon = PackedVector2Array(-5, -2, -6, 58, 1170, 58, 1170, 25.041, 1170, -10)
 
 [node name="Player" parent="Actors" instance=ExtResource("2_4b5cr")]
 position = Vector2(586, 570)
-scale = Vector2(1.5, 1.5)
 color = Color(0.584314, 0.141176, 0.635294, 1)
-speed = 20
+health = 1
+speed = 10
 gravity = 500
 
-[node name="imp" parent="Actors" instance=ExtResource("3_twsnt")]
-position = Vector2(81, 65)
+[node name="AnimatedSprite2D" parent="Actors/Player" index="0"]
+animation = &"walk"
+frame_progress = 0.142799
 
-[node name="imp2" parent="Actors" instance=ExtResource("3_twsnt")]
-position = Vector2(1097, 59)
+[node name="CollisionShape2D" parent="Actors/Player" index="1"]
+shape = SubResource("CapsuleShape2D_vwpex")
 
-[node name="imp3" parent="Actors" instance=ExtResource("3_twsnt")]
-position = Vector2(584, 63)
+[node name="Imp" parent="Actors" instance=ExtResource("3_twsnt")]
+position = Vector2(770, 246)
 
-[node name="imp4" parent="Actors" instance=ExtResource("3_twsnt")]
-position = Vector2(64, 582)
+[node name="Imp2" parent="Actors" instance=ExtResource("3_twsnt")]
+position = Vector2(1052, 88)
 
-[node name="imp5" parent="Actors" instance=ExtResource("3_twsnt")]
-position = Vector2(1086, 570)
+[node name="Imp3" parent="Actors" instance=ExtResource("3_twsnt")]
+position = Vector2(1047, 453)
+
+[node name="Imp4" parent="Actors" instance=ExtResource("3_twsnt")]
+position = Vector2(447, 82)
 
 [node name="PlayerControl" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("3_maf6i")]
 actor = NodePath("../Actors/Player")
