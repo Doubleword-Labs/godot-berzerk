@@ -1,4 +1,4 @@
-extends "res://actor.gd"
+extends "res://scripts/actor.gd"
 
 @export_category("Projectile")
 @export var damage: int = 1;

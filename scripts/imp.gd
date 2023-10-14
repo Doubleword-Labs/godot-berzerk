@@ -1,4 +1,4 @@
-extends "res://actor.gd"
+extends "res://scripts/actor.gd"
 
 @onready var player: Player = get_node("/root/Main/Level/Actors/Player");
 

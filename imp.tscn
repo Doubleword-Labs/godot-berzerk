@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwmhvxj2cy4jk"]
 
 [ext_resource type="PackedScene" uid="uid://dyfbh6jxdnlc6" path="res://actor.tscn" id="1_y3pom"]
-[ext_resource type="Script" path="res://imp.gd" id="2_7w4cv"]
+[ext_resource type="Script" path="res://scripts/imp.gd" id="2_7w4cv"]
 
 [node name="Imp" groups=["damageable"] instance=ExtResource("1_y3pom")]
 collision_layer = 4

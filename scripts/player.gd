@@ -1,4 +1,4 @@
-extends "res://actor.gd";
+extends "res://scripts/actor.gd";
 
 class_name Player
 

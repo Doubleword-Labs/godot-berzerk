@@ -1,6 +1,6 @@
 extends Node2D
 
-const Actor = preload("res://actor.gd");
+const Actor = preload("res://scripts/actor.gd");
 
 @export var actor: Node2D;
 
