@@ -14,7 +14,11 @@ config/name="Berzerk"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://assets/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 [autoload]
 
