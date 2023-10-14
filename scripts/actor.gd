@@ -1,6 +1,6 @@
 extends CharacterBody2D;
 
-var Projectile = load("res://projectile.tscn");
+var Projectile = load("res://scenes/projectile.tscn");
 
 var area_2d = Area2D.new();
 

@@ -7,7 +7,7 @@ extends Node
 
 var levels = [
 	# Level 0
-	preload("res://level.tscn")
+	preload("res://scenes/level.tscn")
 	# TODO: Level 1
 	# 
 ]
